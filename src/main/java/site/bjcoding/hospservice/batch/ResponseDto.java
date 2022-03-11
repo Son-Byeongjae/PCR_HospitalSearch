@@ -32,6 +32,7 @@ class Item {
     private String pcrPsblYn;
     private String ratPsblYn;
     private Integer recuClCd;
+    public Integer rnum;
     private String rprtWorpClicFndtTgtYn;
     private String sgguCdNm;
     private String sidoCdNm;
