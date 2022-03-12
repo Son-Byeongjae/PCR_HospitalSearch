@@ -1,9 +1,6 @@
 package site.bjcoding.hospservice.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +9,7 @@ import javax.persistence.Id;
 
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Getter
 @Entity

@@ -34,13 +34,16 @@ class HospDownloadBatchTest {
 
         List<Hospital> hospitals = new ArrayList<>();
 
+        // 1. api를 한번 호출하여 데이터의 총 개수 확인.
         RestTemplate rt = new RestTemplate();
+
+        // 사이즈를 1로 했더니 item이 컬렉션이 아니라서 파싱이 안되서 2로 바꿈.
         int numOfRows = 2;
         String url = "http://apis.data.go.kr/B551182/rprtHospService/getRprtHospService?serviceKey=9M1LSsvcIJljlWLQVf3jGNlpe5HqVJ/V/Tr1YCclQRNlm2O/91l6I5j6DnANT1mIMn22yg/zxgLTneauxfKF7w==&pageNo=1&numOfRows="
                 + numOfRows + "&_type=json";
         ResponseDto responseDto = rt.getForObject(url, ResponseDto.class);
 
-
+        // 2. totalNumOfRows만큼 데이터 가져오기.
         int totalNumOfRows = responseDto.getResponse().getBody().getTotalCount();
         String totalRowUrl = "http://apis.data.go.kr/B551182/rprtHospService/getRprtHospService?serviceKey=9M1LSsvcIJljlWLQVf3jGNlpe5HqVJ/V/Tr1YCclQRNlm2O/91l6I5j6DnANT1mIMn22yg/zxgLTneauxfKF7w==&pageNo=1&numOfRows="
                 + totalNumOfRows + "&_type=json";
@@ -48,6 +51,7 @@ class HospDownloadBatchTest {
 
         List<Item> items = fullRowResponseDto.getResponse().getBody().getItems().getItem();
 
+        // 컬렉션 복사
         hospitals = items.stream().map(
                 (e) -> {
                     return Hospital.builder()
