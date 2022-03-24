@@ -20,11 +20,11 @@ public class HospDownloadBatch {
     private final HospitalRepository hospitalRepository;
 
     // 초 분 시 일 월 요일
-    //@Scheduled(cron = "0 0 8/2 * * *", zone = "Asia/Seoul") // 2시간 주기로 DB최신화 시켜주기
-    @Scheduled(cron = "0 56 * * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 0 8/2 * * *", zone = "Asia/Seoul") // 2시간 주기로 DB최신화 시켜주기
+    //@Scheduled(cron = "0 11 * * * *", zone = "Asia/Seoul")
     public void startBatch(){
 
-        System.out.println("배치가 돕니다");
+        //System.out.println("배치가 돕니다");
 
         List<Hospital> hospitals = new ArrayList<>();
 
